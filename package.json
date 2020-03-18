@@ -1,0 +1,52 @@
+{
+  "name": "libary-ts-template",
+  "version": "0.0.1",
+  "description": "Lightweight templating system",
+  "scripts": {
+    "build": "rollup --config",
+    "lint": "eslint --ext .js,.ts .",
+    "test": "jest --passWithNoTests",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caseable/front-end-vanilla-template.git"
+  },
+  "keywords": [
+    "bootstrap"
+  ],
+  "author": "caseable GmbH <it@caseable.com>",
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/caseable/front-end-vanilla-template/issues"
+  },
+  "homepage": "https://github.com/caseable/front-end-vanilla-template#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
+    "@caseable/eslint-config-35up-base": "0.0.2",
+    "@rollup/plugin-typescript": "^4.0.0",
+    "@types/chai": "^4.2.10",
+    "@types/chai-string": "^1.4.2",
+    "@types/jest": "^25.1.4",
+    "@types/sinon-chai": "^3.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
+    "chai": "^4.2.0",
+    "chai-string": "^1.5.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "jest-fetch-mock": "^3.0.3",
+    "rollup": "^2.0.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "sinon-chai": "^3.5.0",
+    "typescript": "^3.8.3"
+  },
+  "main": "build/library.js",
+  "types": "src"
+}
