@@ -13,24 +13,37 @@ github-pkg:
 	touch ~/.npmrc \
 	&& npm config set '//npm.pkg.github.com/:_authToken' "$$GH_TOKEN"
 
-.PHONY: node_modules
-node_modules:
+.PHONY: wc/node_modules
+wc/node_modules:
+	cd js-test-utils-wc; \
 	npm i
 
-.PHONY: build
-build: node_modules
+.PHONY: wc/build
+wc/build: wc/node_modules
+	cd js-test-utils-wc; \
 	npm run build
 
-.PHONY: test-unit
-test-unit: node_modules
+.PHONY: wc/test-unit
+wc/test-unit: wc/node_modules
+	cd js-test-utils-wc; \
 	npm run test
 
+.PHONY: wc/test
+wc/test: wc/test-unit
+
+.PHONY: wc/lint
+wc/lint: wc/node_modules
+	cd js-test-utils-wc; \
+	npm run lint
+
+.PHONY: build
+build: wc/build
+
 .PHONY: test
-test: test-unit
+test: wc/test
 
 .PHONY: lint
-lint: node_modules
-	npm run lint
+lint: wc/lint
 
 .PHONY: ci
 ci: lint build test
