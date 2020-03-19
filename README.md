@@ -1,3 +1,3 @@
-# library-ts-template
+# js-test-utils
 
-The base template for libraries made in typescript
+Monorepo for js test utils 

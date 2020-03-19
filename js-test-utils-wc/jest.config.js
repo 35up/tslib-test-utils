@@ -7,4 +7,5 @@ module.exports = {
   transform: {
     '^.+\\.[jt]s$': 'babel-jest',
   },
+  testEnvironment: 'jsdom-sixteen',
 };

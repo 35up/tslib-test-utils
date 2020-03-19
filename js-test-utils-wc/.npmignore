@@ -1,0 +1,5 @@
+*
+!src/*
+!build/*
+src/setup-tests.ts
+src/**/*.test.*
