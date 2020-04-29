@@ -1,6 +1,8 @@
 module.exports = {
   setupFilesAfterEnv: ['./src/setup-tests.ts'],
-  testPathIgnorePatterns: ['/node_modules/'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!lit-element|lit-html)',
+  ],
   coverageDirectory: './coverage',
   coverageReporters: ['lcov'],
   collectCoverageFrom: ['src/**/*.ts'],

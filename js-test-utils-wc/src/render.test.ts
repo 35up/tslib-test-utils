@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import sinon, { SinonSandbox } from 'sinon';
+import { html } from 'lit-html';
 import { render } from './render';
 
 describe('render', () => {
@@ -52,5 +53,14 @@ describe('render', () => {
 
     expect(connected).to.be.true;
     expect(promiseStatus).to.equal('resolved');
+  });
+
+  it('renders lit-html too', async () => {
+    const arbitraryObject = {};
+    const span: HTMLElement = await render(
+      html`<span class="real very" .object=${arbitraryObject}>content</span>`,
+    );
+    expect(span).to.have.property('object', arbitraryObject);
+    expect(span).to.match('span.very.real');
   });
 });
