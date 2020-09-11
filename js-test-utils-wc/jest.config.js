@@ -7,7 +7,8 @@ module.exports = {
   coverageReporters: ['lcov'],
   collectCoverageFrom: ['src/**/*.ts'],
   transform: {
-    '^.+\\.[jt]s$': 'babel-jest',
+    '^.+\\.m?js$': 'babel-jest',
+    '^.+\\.ts$': ['ts-jest', {babelConfig: true}],
   },
   testEnvironment: 'jsdom-sixteen',
 };
