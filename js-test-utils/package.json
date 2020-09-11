@@ -1,0 +1,57 @@
+{
+  "name": "@caseable/js-test-utils",
+  "version": "0.0.1",
+  "description": "Set of functions and other utils for testing",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --ext .js,.ts .",
+    "test": "jest --passWithNoTests",
+    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caseable/js-test-utils.git"
+  },
+  "keywords": [
+    "bootstrap"
+  ],
+  "author": "caseable GmbH <it@caseable.com>",
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/caseable/js-test-utils/issues"
+  },
+  "homepage": "https://github.com/caseable/js-test-utils#readme",
+  "dependencies": {
+    "lit-html": "^1.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@caseable/eslint-config-35up-base": "0.0.2",
+    "@types/chai": "^4.2.10",
+    "@types/chai-string": "^1.4.2",
+    "@types/jest": "^25.1.4",
+    "@types/sinon": "^7.5.2",
+    "@types/sinon-chai": "^3.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
+    "chai": "^4.2.0",
+    "chai-string": "^1.5.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "regenerator-runtime": "^0.13.5",
+    "sinon": "^9.0.1",
+    "sinon-chai": "^3.5.0",
+    "ts-jest": "^26.3.0",
+    "typescript": "^3.8.3"
+  },
+  "main": "build/index.js",
+  "types": "src",
+  "engines": {
+    "node": ">=4"
+  }
+}
