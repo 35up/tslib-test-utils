@@ -1,2 +1,2 @@
-export { waitForCycles } from './wait-for-cycles';
+export { flushPromises } from './flush-promises';
 export { delay, delayResolve } from './delay';
