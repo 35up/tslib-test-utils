@@ -36,11 +36,34 @@ wc/lint: wc/node_modules
 	cd js-test-utils-wc; \
 	npm run lint
 
+.PHONY: general/node_modules
+general/node_modules:
+	cd js-test-utils; \
+	npm i
+
+.PHONY: general/build
+general/build: general/node_modules
+	cd js-test-utils; \
+	npm run build
+
+.PHONY: general/test-unit
+general/test-unit: general/node_modules
+	cd js-test-utils; \
+	npm run test
+
+.PHONY: general/test
+general/test: general/test-unit
+
+.PHONY: general/lint
+general/lint: general/node_modules
+	cd js-test-utils; \
+	npm run lint
+
 .PHONY: build
-build: wc/build
+build: wc/build general/build
 
 .PHONY: test
-test: wc/test
+test: wc/test general/test
 
 .PHONY: lint
 lint: wc/lint
