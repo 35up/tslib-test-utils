@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { flushPromises } from './flush-promises';
 
+
 describe('flush-promises', () => {
   it('flushes all pending promises', async () => {
     let promiseChainResolved = false;

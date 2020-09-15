@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import { delay, delayResolve } from './delay';
 
+
 describe('delay', () => {
   beforeEach(() => {
     jest.useFakeTimers();
