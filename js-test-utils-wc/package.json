@@ -1,6 +1,6 @@
 {
   "name": "@caseable/js-test-utils-wc",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Set of functions and other utils for testing web components",
   "scripts": {
     "build": "tsc",
