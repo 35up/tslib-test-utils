@@ -1,2 +1,9 @@
 extends:
   - "@35up/35up-base"
+rules:
+  "import/extensions":
+    - error
+    - never
+    -
+      pattern:
+        "js": ignorePackages
