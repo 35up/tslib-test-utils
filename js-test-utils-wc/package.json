@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/35up/js-test-utils#readme",
   "dependencies": {
-    "lit-html": "^1.3.0"
+    "lit": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "@babel/compat-data": "^7.11.0",
