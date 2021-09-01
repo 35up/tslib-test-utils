@@ -1,5 +1,5 @@
 import { render as renderLit, TemplateResult } from 'lit';
-import { isTemplateResult } from 'lit/directive-helpers.js';
+import { isTemplateResult } from 'lit/directive-helpers';
 import { waitForFrame } from './wait-for-frame';
 
 export async function render<T extends HTMLElement>(
