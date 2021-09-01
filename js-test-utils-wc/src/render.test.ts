@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon, { SinonSandbox } from 'sinon';
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { render } from './render';
 
 describe('render', () => {
@@ -55,7 +55,7 @@ describe('render', () => {
     expect(promiseStatus).to.equal('resolved');
   });
 
-  it('renders lit-html too', async () => {
+  it('renders lit too', async () => {
     const arbitraryObject = {};
     const span: HTMLElement = await render(
       html`<span class="real very" .object=${arbitraryObject}>content</span>`,
