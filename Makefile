@@ -16,17 +16,17 @@ github-pkg:
 
 .PHONY: wc/node_modules
 wc/node_modules:
-	cd js-test-utils-wc; \
+	cd tslib-test-utils-wc; \
 	npm i
 
 .PHONY: wc/build
 wc/build: wc/node_modules
-	cd js-test-utils-wc; \
+	cd tslib-test-utils-wc; \
 	npm run build
 
 .PHONY: wc/test-unit
 wc/test-unit: wc/node_modules
-	cd js-test-utils-wc; \
+	cd tslib-test-utils-wc; \
 	npm run test
 
 .PHONY: wc/test
@@ -34,22 +34,22 @@ wc/test: wc/test-unit
 
 .PHONY: wc/lint
 wc/lint: wc/node_modules
-	cd js-test-utils-wc; \
+	cd tslib-test-utils-wc; \
 	npm run lint
 
 .PHONY: general/node_modules
 general/node_modules:
-	cd js-test-utils; \
+	cd tslib-test-utils; \
 	npm i
 
 .PHONY: general/build
 general/build: general/node_modules
-	cd js-test-utils; \
+	cd tslib-test-utils; \
 	npm run build
 
 .PHONY: general/test-unit
 general/test-unit: general/node_modules
-	cd js-test-utils; \
+	cd tslib-test-utils; \
 	npm run test
 
 .PHONY: general/test
@@ -57,7 +57,7 @@ general/test: general/test-unit
 
 .PHONY: general/lint
 general/lint: general/node_modules
-	cd js-test-utils; \
+	cd tslib-test-utils; \
 	npm run lint
 
 .PHONY: build
