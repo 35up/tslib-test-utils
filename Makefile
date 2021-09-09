@@ -14,6 +14,29 @@ github-pkg:
 	touch ~/.npmrc \
 	&& npm config set '//npm.pkg.github.com/:_authToken' "$$GH_TOKEN"
 
+.PHONY: svelte/node_modules
+svelte/node_modules:
+	cd tslib-test-utils-svelte; \
+	npm i
+
+.PHONY: svelte/build
+svelte/build: svelte/node_modules
+	cd tslib-test-utils-svelte; \
+	npm run build
+
+.PHONY: svelte/test-unit
+svelte/test-unit: svelte/node_modules
+	cd tslib-test-utils-svelte; \
+	npm run test
+
+.PHONY: svelte/test
+svelte/test: svelte/test-unit
+
+.PHONY: svelte/lint
+svelte/lint: svelte/node_modules
+	cd tslib-test-utils-svelte; \
+	npm run lint
+
 .PHONY: wc/node_modules
 wc/node_modules:
 	cd tslib-test-utils-wc; \
@@ -61,13 +84,13 @@ general/lint: general/node_modules
 	npm run lint
 
 .PHONY: build
-build: wc/build general/build
+build: wc/build general/build svelte/build
 
 .PHONY: test
-test: wc/test general/test
+test: wc/test general/test svelte/test
 
 .PHONY: lint
-lint: wc/lint
+lint: wc/lint svelte/lint
 
 .PHONY: ci
 ci: lint build test
