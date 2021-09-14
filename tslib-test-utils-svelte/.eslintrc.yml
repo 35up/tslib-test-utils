@@ -1,0 +1,10 @@
+extends:
+  - "@35up/35up-base"
+overrides:
+  -
+    files:
+      - "*.ts"
+    rules:
+      import/no-extraneous-dependencies:
+        - error
+        - peerDependencies: true

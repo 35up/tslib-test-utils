@@ -1,5 +1,5 @@
 {
-  "name": "@35up/js-test-utils",
+  "name": "@35up/tslib-test-utils",
   "version": "0.1.1",
   "description": "Set of functions and other utils for testing",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/35up/js-test-utils.git"
+    "url": "git+https://github.com/35up/tslib-test-utils.git"
   },
   "keywords": [
     "bootstrap"
@@ -20,9 +20,9 @@
   "author": "35up GmbH <the.engineers@35up.com>",
   "license": "UNLICENCED",
   "bugs": {
-    "url": "https://github.com/35up/js-test-utils/issues"
+    "url": "https://github.com/35up/tslib-test-utils/issues"
   },
-  "homepage": "https://github.com/35up/js-test-utils#readme",
+  "homepage": "https://github.com/35up/tslib-test-utils#readme",
   "dependencies": {
     "sinon": "^9.0.3"
   },
