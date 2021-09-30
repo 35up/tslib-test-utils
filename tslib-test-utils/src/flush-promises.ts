@@ -1,5 +1,5 @@
 const { nextTick } = process;
 
-export async function flushPromises() {
-  await new Promise(resolve => nextTick.call(process, resolve));
+export async function flushPromises(): Promise<void> {
+  return new Promise(resolve => nextTick.call(process, resolve));
 }
