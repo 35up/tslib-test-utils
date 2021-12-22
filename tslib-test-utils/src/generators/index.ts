@@ -5,5 +5,5 @@ export { integer } from './integer';
 export { number } from './number';
 export { object } from './object';
 export { string } from './string';
-export { operators } from './operators';
+export * from './operators';
 
