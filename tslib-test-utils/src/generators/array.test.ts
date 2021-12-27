@@ -21,15 +21,21 @@ describe('array', () => {
     (x: unknown) => boolean
   ][] = [
     [char(), str => typeof str === 'string' && str.length === 1],
-    [number(), nm => typeof nm === 'number'],
-    [boolean(), nm => typeof nm === 'boolean'],
-    [integer(), nm => typeof nm === 'number' && Math.floor(nm) === nm],
+    [number(), num => typeof num === 'number'],
+    [boolean(), bool => typeof bool === 'boolean'],
+    [integer(), int => typeof int === 'number' && Math.floor(int) === int],
   ];
 
   it('throws an exception when the rages include negatives', () => {
     expect(() => string(-3, 8)).to.throw();
     expect(() => string(-3, -1)).to.throw();
     expect(() => string(0, -8)).to.throw();
+  });
+
+  it('throws an exception when the rages are inverted', () => {
+    expect(() => string(8, 3)).to.throw();
+    expect(() => string(3, 1)).to.throw();
+    expect(() => string(8, 0)).to.throw();
   });
 
   it('generates arrays of a size between the range with elements of the type', () => {

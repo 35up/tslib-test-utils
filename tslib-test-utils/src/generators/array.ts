@@ -10,6 +10,10 @@ export function array<T>(
     throw new TypeError('The range of sizes cannot include negative numbers');
   }
 
+  if (minLength > maxLength) {
+    throw new TypeError('The minSize cannot be bellow maSize');
+  }
+
   return map(integer(minLength, maxLength), (length) => {
     const arrayItems = take(generator, length);
     return [...arrayItems()];

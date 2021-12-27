@@ -1,3 +1,8 @@
+/**
+ * Merges together the values of each of the generators with the values at the
+ * corresponding position.
+ * @param generators
+ */
 export function zip<T>(
   generators: Array<() => Iterator<T>>,
 ): () => IterableIterator<T[]> {

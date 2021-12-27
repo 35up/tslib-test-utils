@@ -4,7 +4,7 @@ import { zip } from './zip';
 import { from } from './from';
 
 describe('zip', () => {
-  it('zips all the generator results into an generator of arrays', () => {
+  it('zips all the generator results into a generator of arrays', () => {
     const generators = [
       loop(from([1])),
       loop(from([1, 2, 3])),

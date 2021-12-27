@@ -3,6 +3,14 @@ import { boolean } from './boolean';
 import { take } from './operators';
 
 describe('boolean', () => {
+  it('only generates booleans', () => {
+    const generator = take(boolean(), 1000);
+
+    for (const item of generator()) {
+      expect(item).to.be.a('boolean');
+    }
+  });
+
   it('produces roughly the same number of true and false', () => {
     const generator = boolean();
     const first1000000 = [...take(generator, 1000000)()];

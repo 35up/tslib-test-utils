@@ -11,6 +11,7 @@ describe('number', () => {
     [0, Number.MAX_VALUE],
     [-Number.MAX_VALUE, Number.MAX_VALUE],
     [1000, 124345.2435],
+    [3.12344, Math.PI],
     [-4392302, -213421],
     [-1232, 21343],
   ];
@@ -22,6 +23,14 @@ describe('number', () => {
       for (const num of generator()) {
         expect(num).to.be.greaterThanOrEqual(from).and.below(to);
       }
+    }
+  });
+
+  it('works with the range inverted', () => {
+    const generator = take(number(-3, -50), 100);
+
+    for (const num of generator()) {
+      expect(num).to.be.greaterThanOrEqual(-50).and.below(-3);
     }
   });
 
