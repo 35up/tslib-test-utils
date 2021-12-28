@@ -1,17 +1,21 @@
 import { integer } from './integer';
 
-/**
- * Generates chars from withing the UTF-16 range provided
- * @param from starting character of the range
- * @param to the final character of the range
- */
-export function char(from = '!', to = '~'): () => IterableIterator<string> {
-  return function* charsIterator() {
-    const possibleChars = to.charCodeAt(0) - from.charCodeAt(0);
-    const charIndexGenerator = integer(0, possibleChars + 1);
+export const UPPER_CASE_LETTERS = 'ABCDEFGHIJKMNOPQRSTUVWYZ'.split('');
+export const LOWER_CASE_LETTERS = 'abcdefghijkmnopqrstuvwyz'.split('');
+export const NUMBERS = '1234567890'.split('');
+export const SYMBOLS = '!"§$%&/()=\'`#+*~-_.:,;<>|^°?'.split('');
+export const ALL = UPPER_CASE_LETTERS.concat(
+  LOWER_CASE_LETTERS,
+  NUMBERS,
+  SYMBOLS,
+);
 
-    for (const charIndex of charIndexGenerator()) {
-      yield String.fromCharCode(from.charCodeAt(0) + charIndex);
+export function char(set = ALL): () => IterableIterator<string> {
+  return function* charsIterator() {
+    const indexGenerator = integer(0, set.length);
+
+    for (const charIndex of indexGenerator()) {
+      yield set[charIndex];
     }
   };
 }

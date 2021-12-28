@@ -1,22 +1,27 @@
 import { expect } from 'chai';
 import { take } from './operators';
-import { char } from './char';
+import {
+  ALL,
+  char,
+  LOWER_CASE_LETTERS,
+  NUMBERS,
+  SYMBOLS,
+  UPPER_CASE_LETTERS,
+} from './char';
 
+
+const SETS = [
+  LOWER_CASE_LETTERS,
+  UPPER_CASE_LETTERS,
+  NUMBERS,
+  SYMBOLS,
+  ALL,
+];
 
 describe('char', () => {
-  const rangesAndSet = [
-    [['a', 'z'], 'abcdefghijklmnopqrstuvwxyz'.split('')],
-    [['A', 'Z'], 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')],
-    [
-      ['A', 'z'],
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz'.split(''),
-    ],
-    [[':', '@'], ':;<=>?@'.split('')],
-  ];
-
   it('always generates chars inside of the set', () => {
-    for (const [ [ from, to ], set] of rangesAndSet) {
-      const generator = take(char(from, to), 10000);
+    for (const set of SETS) {
+      const generator = take(char(set), 10000);
 
       for (const character of generator()) {
         expect(set).to.include(character);
@@ -25,8 +30,8 @@ describe('char', () => {
   });
 
   it('eventually generates every char in the range set', () => {
-    for (const [ [ from, to ], set ] of rangesAndSet) {
-      const generator = char(from, to);
+    for (const set of SETS) {
+      const generator = char(set);
       const iterator = generator();
       const actualSet = new Set(set);
 
