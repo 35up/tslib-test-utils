@@ -5,11 +5,11 @@ import { zip, map } from './operators';
 // value
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function object<T extends object>(
-  blueprint: {[P in keyof T]: () => IterableIterator<T[P]>},
+  blueprint: {[P in keyof T]: () => Iterator<T[P]>},
 ): () => IterableIterator<T> {
   const keys = Object.keys(blueprint) as (keyof T)[];
   const iterators = Object
-    .values<() => IterableIterator<T[keyof T]>>(blueprint);
+    .values<() => Iterator<T[keyof T]>>(blueprint);
 
   return map(
     zip(iterators),
