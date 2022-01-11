@@ -11,7 +11,7 @@ export function array<T>(
   }
 
   if (minLength > maxLength) {
-    throw new TypeError('The minSize cannot be bellow maSize');
+    throw new TypeError('The minLength cannot be bellow maxLength');
   }
 
   return map(integer(minLength, maxLength), (length) => {
