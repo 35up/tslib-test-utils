@@ -13,10 +13,10 @@ export function fuzz<T>(
   fn: (arg: T) => (Promise<void> | void),
   samples = 100,
 ): void {
+  for (const item of take(iterable, samples)()) {
   // eslint-disable-next-line prefer-arrow-callback,func-names
-  it(description, async function () {
-    for (const item of take(iterable, samples)()) {
+    it(description, async function () {
       await fn.call(this, item);
-    }
-  });
+    });
+  }
 }
