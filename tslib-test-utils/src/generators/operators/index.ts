@@ -5,4 +5,5 @@ export { loop } from './loop';
 export { map } from './map';
 export { skip } from './skip';
 export { take } from './take';
+export { filter } from './filter';
 export { zip } from './zip';
