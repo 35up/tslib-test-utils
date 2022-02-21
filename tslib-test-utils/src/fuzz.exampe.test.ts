@@ -9,7 +9,7 @@ import {
   zip,
 } from './generators';
 import { LOWER_CASE_LETTERS } from './generators/char';
-import { fuzz } from './fuzz';
+import { fuzz, fuzzDescribe } from './fuzz';
 
 
 type TUser = {
@@ -94,11 +94,13 @@ describe('fuzz examples', () => {
       ],
     );
 
-    fuzz(
+    fuzzDescribe(
       usersWithRoleGenerator,
-      'returns true when role is included',
+      'the role is included',
       ([role, user]: [string, TUser]) => {
-        expect(hasRole(user, role)).to.be.true;
+        it('returns true', () => {
+          expect(hasRole(user, role)).to.be.true;
+        });
       },
     );
 
@@ -111,11 +113,13 @@ describe('fuzz examples', () => {
       ],
     );
 
-    fuzz(
+    fuzzDescribe(
       usersWithoutRoleGenerator,
-      'returns false when role is not included',
+      'the role is not included',
       ([ role, user ]: [string, TUser]) => {
-        expect(hasRole(user, role)).to.be.false;
+        it('returns false', () => {
+          expect(hasRole(user, role)).to.be.false;
+        });
       },
     );
   });

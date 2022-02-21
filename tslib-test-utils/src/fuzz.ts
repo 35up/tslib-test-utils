@@ -20,3 +20,24 @@ export function fuzz<T>(
     });
   }
 }
+/**
+ * Examples: {@link ./fuzz.examples.test.ts}
+ * @param iterable
+ * @param description
+ * @param fn
+ * @param samples
+ */
+export function fuzzDescribe<T>(
+  iterable: () => Iterable<T>,
+  description: string,
+  fn: (arg: T) => void,
+  samples = 100,
+): void {
+  for (const item of take(iterable, samples)()) {
+  // eslint-disable-next-line prefer-arrow-callback,func-names
+    describe(description, function () {
+      fn.call(this, item);
+    });
+  }
+}
+
