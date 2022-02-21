@@ -11,7 +11,7 @@ export function fuzz<T>(
   iterable: () => Iterable<T>,
   description: string,
   fn: (arg: T) => (Promise<void> | void),
-  samples = 100,
+  samples = 30,
 ): void {
   for (const item of take(iterable, samples)()) {
   // eslint-disable-next-line prefer-arrow-callback,func-names
@@ -31,7 +31,7 @@ export function fuzzDescribe<T>(
   iterable: () => Iterable<T>,
   description: string,
   fn: (arg: T) => void,
-  samples = 100,
+  samples = 30,
 ): void {
   for (const item of take(iterable, samples)()) {
   // eslint-disable-next-line prefer-arrow-callback,func-names
