@@ -1,11 +1,13 @@
 import { integer } from './integer';
 import { take, map } from './operators';
+import { TGenerator } from './types';
+
 
 export function array<T>(
-  generator: () => IterableIterator<T>,
+  generator: TGenerator<T>,
   minLength = 0,
   maxLength = 30,
-): () => IterableIterator<T[]> {
+): TGenerator<T[]> {
   if (minLength < 0 || maxLength < 0) {
     throw new TypeError('The range of sizes cannot include negative numbers');
   }

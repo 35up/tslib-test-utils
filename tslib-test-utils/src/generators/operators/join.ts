@@ -1,4 +1,5 @@
 import { integer } from '../integer';
+import { TGenerator } from '../types';
 
 
 /**
@@ -7,7 +8,7 @@ import { integer } from '../integer';
  */
 export function join<T>(
   ...args: Array<() => Iterator<T>>
-): () => IterableIterator<T> {
+): TGenerator<T> {
   return function* joinIterator() {
     const intGenerator = integer(0, args.length);
     const iterators = args.map(gen => gen());

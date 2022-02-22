@@ -1,6 +1,9 @@
+import { TGenerator } from '../types';
+
+
 export function loop<T>(
   generator: () => Iterable<T>,
-): () => IterableIterator<T> {
+): TGenerator<T> {
   return function* loopIterator() {
     while (true) {
       yield* generator();

@@ -1,3 +1,6 @@
+import { TGenerator } from './types';
+
+
 // It is safe because the implementation avoids the possibility of overflowing
 // floats
 function safeRandomNumber(from: number, to: number): number {
@@ -15,7 +18,7 @@ function safeRandomNumber(from: number, to: number): number {
 export function number(
   from = -Number.MAX_VALUE,
   to = Number.MAX_VALUE,
-): () => IterableIterator<number> {
+): TGenerator<number> {
   return function* numberIterator() {
     while (true) {
       yield safeRandomNumber(from, to);
