@@ -6,6 +6,7 @@ import { number } from './number';
 import { boolean } from './boolean';
 import { char } from './char';
 import { array } from './array';
+import { TGenerator } from './types';
 
 
 describe('array', () => {
@@ -17,7 +18,7 @@ describe('array', () => {
   ];
 
   const contents: [
-    () => IterableIterator<unknown>,
+    TGenerator<unknown>,
     (x: unknown) => boolean
   ][] = [
     [char(), str => typeof str === 'string' && str.length === 1],

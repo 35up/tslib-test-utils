@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import {
+  TGenerator,
   array,
   boolean,
   integer,
@@ -7,8 +8,8 @@ import {
   object,
   string,
   zip,
+  LOWER_CASE_LETTERS,
 } from './generators';
-import { LOWER_CASE_LETTERS } from './generators/char';
 import { fuzz, fuzzDescribe } from './fuzz';
 
 
@@ -35,7 +36,7 @@ const randomBirthdateGenerator = map(
 function getUserGenerators(
   rolesGenerator: () => Iterator<string[]>,
   birthdateGenerator: () => Iterator<Date>,
-): () => IterableIterator<TUser> {
+): TGenerator<TUser> {
   return object({
     username: string(5, 15),
     roles: rolesGenerator,
@@ -57,8 +58,8 @@ describe('fuzz examples', () => {
     }
 
     const yearGenerator = (minAge, maxAge) => map(
-      zip<number|Date>([integer(minAge, maxAge), randomBirthdateGenerator]),
-      ([age, date]: [number, Date]) => {
+      zip<[number, Date]>([integer(minAge, maxAge), randomBirthdateGenerator]),
+      ([age, date]) => {
         date.setFullYear(new Date().getFullYear() - age);
         return date;
       },
@@ -87,8 +88,8 @@ describe('fuzz examples', () => {
     }
 
     const usersWithRoleGenerator = map(
-      zip<string|TUser>([randomRoleGenerator, userGenerators]),
-      ([role, user]: [string, TUser]) => [
+      zip<[string, TUser]>([randomRoleGenerator, userGenerators]),
+      ([role, user]) => [
         role,
         {...user, roles: [...user.roles, role]},
       ],
@@ -106,8 +107,8 @@ describe('fuzz examples', () => {
 
 
     const usersWithoutRoleGenerator = map(
-      zip<string|TUser>([randomRoleGenerator, userGenerators]),
-      ([role, user]: [string, TUser]) => [
+      zip<[string, TUser]>([randomRoleGenerator, userGenerators]),
+      ([role, user]) => [
         role,
         {...user, roles: user.roles.filter(userRole => userRole !== role)},
       ],

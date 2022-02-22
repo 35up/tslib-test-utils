@@ -1,4 +1,5 @@
 import { zip, map } from './operators';
+import { TGenerator } from './types';
 
 // I need to guard that T is an object, there is no other sensible way to do
 // this. `Record` gives the possibilities of arbitrary props and {} means empty
@@ -6,7 +7,7 @@ import { zip, map } from './operators';
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function object<T extends object>(
   blueprint: {[P in keyof T]: () => Iterator<T[P]>},
-): () => IterableIterator<T> {
+): TGenerator<T> {
   const keys = Object.keys(blueprint) as (keyof T)[];
   const iterators = Object
     .values<() => Iterator<T[keyof T]>>(blueprint);

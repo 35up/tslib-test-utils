@@ -1,7 +1,10 @@
+import { TGenerator } from '../types';
+
+
 export function take<T>(
   generator: () => Iterable<T>,
   count: number,
-): () => IterableIterator<T> {
+): TGenerator<T> {
   return function* takeIterator() {
     let currentCount = 0;
 

@@ -1,4 +1,7 @@
-export function boolean(): () => IterableIterator<boolean> {
+import { TGenerator } from './types';
+
+
+export function boolean(): TGenerator<boolean> {
   return function* booleanIterator() {
     while (true) {
       yield Math.random() >= 0.5;

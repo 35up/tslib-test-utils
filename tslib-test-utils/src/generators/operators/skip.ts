@@ -1,7 +1,10 @@
+import { TGenerator } from '../types';
+
+
 export function skip<T>(
   generator: () => Iterable<T>,
   count: number,
-): () => IterableIterator<T> {
+): TGenerator<T> {
   return function* skipIterator() {
     let currentCount = 0;
 

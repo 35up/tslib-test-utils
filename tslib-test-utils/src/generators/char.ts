@@ -1,4 +1,6 @@
 import { integer } from './integer';
+import { TGenerator } from './types';
+
 
 export const UPPER_CASE_LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 export const LOWER_CASE_LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -10,7 +12,7 @@ export const ALL = UPPER_CASE_LETTERS.concat(
   SYMBOLS,
 );
 
-export function char(set = ALL): () => IterableIterator<string> {
+export function char(set = ALL): TGenerator<string> {
   return function* charsIterator() {
     const indexGenerator = integer(0, set.length);
 

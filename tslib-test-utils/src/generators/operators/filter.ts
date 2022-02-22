@@ -1,7 +1,10 @@
+import { TGenerator } from '../types';
+
+
 export function filter<T>(
   generator: () => Iterable<T>,
   predicate: (item: T) => boolean,
-): () => IterableIterator<T> {
+): TGenerator<T> {
   return function* filterIterator() {
     for (const item of generator()) {
       if (!predicate(item)) {
