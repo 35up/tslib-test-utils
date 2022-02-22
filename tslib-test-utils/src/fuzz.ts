@@ -15,7 +15,7 @@ export function fuzz<T>(
 ): void {
   for (const item of take(iterable, samples)()) {
   // eslint-disable-next-line prefer-arrow-callback,func-names
-    it(description, async function () {
+    test(`${description} - with input ${JSON.stringify(item, null, 2)}`, async function () {
       await fn.call(this, item);
     });
   }
@@ -35,7 +35,7 @@ export function fuzzDescribe<T>(
 ): void {
   for (const item of take(iterable, samples)()) {
   // eslint-disable-next-line prefer-arrow-callback,func-names
-    describe(description, function () {
+    describe(`${description} - with input ${JSON.stringify(item, null, 2)}`, function () {
       fn.call(this, item);
     });
   }
