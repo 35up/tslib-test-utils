@@ -1,6 +1,13 @@
 export { array } from './array';
 export { boolean } from './boolean';
-export { char, LOWER_CASE_LETTERS, NUMBERS, UPPER_CASE_LETTERS, SYMBOLS, ALL } from './char';
+export {
+  char,
+  LOWER_CASE_LETTERS,
+  NUMBERS,
+  UPPER_CASE_LETTERS,
+  SYMBOLS,
+  ALL as CHARACTERS,
+} from './char';
 export { integer } from './integer';
 export { number } from './number';
 export { object } from './object';
