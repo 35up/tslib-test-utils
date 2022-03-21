@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "common",
+    "svelte"
+  ],
+  "version": "1.0.0"
+}
