@@ -1,8 +1,8 @@
 {
   "packages": [
-    "tslib-test-utils",
-    "tslib-test-utils-svelte",
-    "tslib-test-utils-wc"
+    "common",
+    "svelte",
+    "wc"
   ],
   "version": "1.0.0"
 }
