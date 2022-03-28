@@ -14,19 +14,18 @@ github-pkg:
 	touch ~/.npmrc \
 	&& npm config set '//npm.pkg.github.com/:_authToken' "$$GH_TOKEN"
 
-.PHONY: svelte/node_modules
 svelte/node_modules:
-	cd tslib-test-utils-svelte; \
+	cd svelte; \
 	npm i
 
 .PHONY: svelte/build
 svelte/build: svelte/node_modules
-	cd tslib-test-utils-svelte; \
+	cd svelte; \
 	npm run build
 
 .PHONY: svelte/test-unit
 svelte/test-unit: svelte/node_modules
-	cd tslib-test-utils-svelte; \
+	cd svelte; \
 	npm run test
 
 .PHONY: svelte/test
@@ -34,22 +33,21 @@ svelte/test: svelte/test-unit
 
 .PHONY: svelte/lint
 svelte/lint: svelte/node_modules
-	cd tslib-test-utils-svelte; \
+	cd svelte; \
 	npm run lint
 
-.PHONY: wc/node_modules
 wc/node_modules:
-	cd tslib-test-utils-wc; \
+	cd wc; \
 	npm i
 
 .PHONY: wc/build
 wc/build: wc/node_modules
-	cd tslib-test-utils-wc; \
+	cd wc; \
 	npm run build
 
 .PHONY: wc/test-unit
 wc/test-unit: wc/node_modules
-	cd tslib-test-utils-wc; \
+	cd wc; \
 	npm run test
 
 .PHONY: wc/test
@@ -57,37 +55,36 @@ wc/test: wc/test-unit
 
 .PHONY: wc/lint
 wc/lint: wc/node_modules
-	cd tslib-test-utils-wc; \
+	cd wc; \
 	npm run lint
 
-.PHONY: general/node_modules
-general/node_modules:
-	cd tslib-test-utils; \
+common/node_modules:
+	cd common; \
 	npm i
 
-.PHONY: general/build
-general/build: general/node_modules
-	cd tslib-test-utils; \
+.PHONY: common/build
+common/build: common/node_modules
+	cd common; \
 	npm run build
 
-.PHONY: general/test-unit
-general/test-unit: general/node_modules
-	cd tslib-test-utils; \
+.PHONY: common/test-unit
+common/test-unit: common/node_modules
+	cd common; \
 	npm run test
 
-.PHONY: general/test
-general/test: general/test-unit
+.PHONY: common/test
+common/test: common/test-unit
 
-.PHONY: general/lint
-general/lint: general/node_modules
-	cd tslib-test-utils; \
+.PHONY: common/lint
+common/lint: common/node_modules
+	cd common; \
 	npm run lint
 
 .PHONY: build
-build: wc/build general/build svelte/build
+build: wc/build common/build svelte/build
 
 .PHONY: test
-test: wc/test general/test svelte/test
+test: wc/test common/test svelte/test
 
 .PHONY: lint
 lint: wc/lint svelte/lint
