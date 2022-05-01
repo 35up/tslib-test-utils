@@ -2,9 +2,11 @@
 
 .PHONY: github-pkg
 github-pkg:
-	@if cat ~/.npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
+	@if cat .npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
 		exit 0; \
-	fi; \
+	elif cat ~/.npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
+    exit 0; \
+  fi; \
 	echo '==============================================================='; \
 	echo 'Cannot download private packages from the Github package'; \
 	echo 'repository. Please go to https://github.com/settings/tokens and'; \
