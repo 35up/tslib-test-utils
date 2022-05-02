@@ -1,7 +1,15 @@
 .DEFAULT_GOAL := build
 
-.PHONY: github-pkg-%:
-github-pkg-%:
+.PHONY: configure-npm-%:
+configure-npm-%:
+  # Disables package lock
+	npm config set "package-lock"=false --userconfig $*/.npmrc \
+
+  # Sets proper registry
+	npm config set --userconfig $*/.npmrc \
+      "@35up:registry" "https://npm.pkg.github.com" \
+
+  # Makes sure token is present
 	@if cat $*/.npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
 		exit 0; \
 	elif cat ~/.npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
@@ -15,11 +23,8 @@ github-pkg-%:
 	read -p 'here: ' GH_TOKEN \
 	&& npm config set --userconfig $*/.npmrc \
 		'//npm.pkg.github.com/:_authToken' "$$GH_TOKEN" \
-  && npm config set --userconfig $*/.npmrc \
-    "@35up:registry" "https://npm.pkg.github.com" \
-  && npm config set "package-lock"=false --userconfig $*/.npmrc
 
-svelte/node_modules: github-pkg-svelte
+svelte/node_modules: configure-npm-svelte
 	cd svelte; \
 	npm i
 
@@ -41,7 +46,7 @@ svelte/lint: svelte/node_modules
 	cd svelte; \
 	npm run lint
 
-wc/node_modules: github-pkg-wc
+wc/node_modules: configure-npm-wc
 	cd wc; \
 	npm i
 
@@ -63,7 +68,7 @@ wc/lint: wc/node_modules
 	cd wc; \
 	npm run lint
 
-common/node_modules: github-pkg-common
+common/node_modules: configure-npm-common
 	cd common; \
 	npm i
 
