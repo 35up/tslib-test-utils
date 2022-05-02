@@ -1,8 +1,8 @@
 .DEFAULT_GOAL := build
 
-.PHONY: github-pkg
-github-pkg:
-	@if cat .npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
+.PHONY: github-pkg-%:
+github-pkg-%:
+	@if cat $*/.npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
 		exit 0; \
 	elif cat ~/.npmrc | grep -q '^//npm\.pkg\.github\.com/:_authToken'; then \
     exit 0; \
@@ -13,10 +13,13 @@ github-pkg:
 	echo 'generate a personal access token with permissions to read'; \
 	echo 'packages. After you generate the token, please type or paste it'; \
 	read -p 'here: ' GH_TOKEN \
-	&& npm config set --userconfig .npmrc \
-		'//npm.pkg.github.com/:_authToken' "$$GH_TOKEN"
+	&& npm config set --userconfig $*/.npmrc \
+		'//npm.pkg.github.com/:_authToken' "$$GH_TOKEN" \
+  && npm config set --userconfig $*/.npmrc \
+    "@35up:registry" "https://npm.pkg.github.com" \
+  && npm config set "package-lock"=false --userconfig $*/.npmrc
 
-svelte/node_modules:
+svelte/node_modules: github-pkg-svelte
 	cd svelte; \
 	npm i
 
@@ -38,7 +41,7 @@ svelte/lint: svelte/node_modules
 	cd svelte; \
 	npm run lint
 
-wc/node_modules:
+wc/node_modules: github-pkg-wc
 	cd wc; \
 	npm i
 
@@ -60,7 +63,7 @@ wc/lint: wc/node_modules
 	cd wc; \
 	npm run lint
 
-common/node_modules:
+common/node_modules: github-pkg-common
 	cd common; \
 	npm i
 
