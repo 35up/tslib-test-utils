@@ -1,9 +1,8 @@
 .DEFAULT_GOAL := build
 
-.PHONY: configure-npm-%:
-configure-npm-%:
+%/.npmrc:
   # Disables package lock
-	npm config set "package-lock"=false --userconfig $*/.npmrc \
+	npm config set "package-lock"="false" --userconfig $*/.npmrc \
 
   # Sets proper registry
 	npm config set --userconfig $*/.npmrc \
@@ -24,7 +23,7 @@ configure-npm-%:
 	&& npm config set --userconfig $*/.npmrc \
 		'//npm.pkg.github.com/:_authToken' "$$GH_TOKEN" \
 
-svelte/node_modules: configure-npm-svelte
+svelte/node_modules: svelte/.npmrc
 	cd svelte; \
 	npm i
 
@@ -46,7 +45,7 @@ svelte/lint: svelte/node_modules
 	cd svelte; \
 	npm run lint
 
-wc/node_modules: configure-npm-wc
+wc/node_modules: wc/.npmrc
 	cd wc; \
 	npm i
 
@@ -68,7 +67,7 @@ wc/lint: wc/node_modules
 	cd wc; \
 	npm run lint
 
-common/node_modules: configure-npm-common
+common/node_modules: common/.npmrc
 	cd common; \
 	npm i
 
