@@ -8,6 +8,5 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.test.ts", "src/setup-tests.ts"]
+  "include": ["src/**/*"]
 }
