@@ -1,12 +1,8 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "commonjs",
     "outDir": "./build/",
-    "importHelpers": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.ts", "src/setup-tests.ts"]
 }

@@ -45,7 +45,6 @@
     "typescript": "^4.0.2"
   },
   "main": "build/index.js",
-  "types": "src",
   "engines": {
     "node": ">=4"
   }
