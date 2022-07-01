@@ -14,4 +14,9 @@ module.exports = {
     '^.+\\.m?js$': 'babel-jest',
     '^.+\\.ts$': ['ts-jest', {babelConfig: true}],
   },
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json',
+    },
+  },
 };
