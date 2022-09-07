@@ -17,7 +17,7 @@ module.exports = {
     '^.+\\.m?js$': 'babel-jest',
     '^.+\\.ts$': ['ts-jest', {babelConfig: true}],
   },
-  testEnvironment: 'jsdom-sixteen',
+  testEnvironment: 'jsdom',
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.test.json',
