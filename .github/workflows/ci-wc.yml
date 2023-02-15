@@ -32,6 +32,20 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm run test:coverage
+      - name: Clone jest-coverate-report
+        uses: actions/checkout@v3
+        with:
+          repository: 35up/jest-coverage-report-action
+          ref: v1
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+          path: .github/actions/jest-coverage-report
+      - name: Code Coverage Report
+        uses: ./.github/actions/jest-coverage-report
+        id: coverage
+        with:
+          skip-step: all
+          coverage-file: coverage/report.json
+          base-coverage-file: coverage/report.json
 
   slack:
     needs: ci
