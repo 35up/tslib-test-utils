@@ -49,6 +49,7 @@ jobs:
         uses: ./.github/actions/jest-coverage-report
         id: coverage
         with:
+          working-directory: svelte
           skip-step: all
           coverage-file: coverage/report.json
           base-coverage-file: coverage/report.json
