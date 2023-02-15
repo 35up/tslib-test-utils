@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  ci:
+  ci-wc:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     defaults:
@@ -27,7 +27,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '16'
       - name: Configure GitHub NPM Token
         run: npm config set '//npm.pkg.github.com/:_authToken' "${{ secrets.NPM_TOKEN }}"
       - name: Install
@@ -54,7 +54,7 @@ jobs:
           base-coverage-file: coverage/report.json
 
   slack:
-    needs: ci
+    needs: ci-wc
     if: failure()
     runs-on: ubuntu-latest
     timeout-minutes: 3
@@ -73,4 +73,4 @@ jobs:
         with:
           # frontend channel
           channel-id: C963N8H3J
-          job-status: ${{ needs.ci.result }}
+          job-status: ${{ needs.ci-wc.result }}
