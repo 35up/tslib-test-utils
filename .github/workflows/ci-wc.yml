@@ -53,7 +53,7 @@ jobs:
 
   slack:
     needs: ci
-    if: needs.ci.result != 'success'
+    if: failure()
     runs-on: ubuntu-latest
     timeout-minutes: 3
     env:
