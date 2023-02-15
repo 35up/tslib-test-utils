@@ -5,10 +5,13 @@ on:
     branches: [ master ]
     paths:
       - common/**
+      - ./*
+      - ./.github/workflows/ci-common.yml
   pull_request:
     branches: [ master ]
     paths:
-      - common/**
+      - common/**- ./*
+      - ./.github/workflows/ci-common.yml
 
 concurrency:
   group: ${{ github.base_ref }}-${{ github.ref_name }}

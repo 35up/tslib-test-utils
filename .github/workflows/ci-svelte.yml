@@ -5,10 +5,14 @@ on:
     branches: [ master ]
     paths:
       - svelte/**
+      - ./*
+      - ./.github/workflows/ci-svelte.yml
   pull_request:
     branches: [ master ]
     paths:
       - svelte/**
+      - ./*
+      - ./.github/workflows/ci-svelte.yml
 
 concurrency:
   group: ${{ github.base_ref }}-${{ github.ref_name }}
