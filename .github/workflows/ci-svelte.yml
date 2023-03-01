@@ -1,0 +1,81 @@
+name: ci-svelte
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - svelte/**
+      - ./*
+      - ./.github/workflows/ci-svelte.yml
+  pull_request:
+    branches: [ master ]
+    paths:
+      - svelte/**
+      - ./*
+      - ./.github/workflows/ci-svelte.yml
+
+concurrency:
+  group: ${{ github.base_ref }}-${{ github.ref_name }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  ci-svelte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: "./svelte"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Configure GitHub NPM Token
+        run: npm config set '//npm.pkg.github.com/:_authToken' "${{ secrets.NPM_TOKEN }}"
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm run test:coverage
+      - name: Clone jest-coverate-report
+        uses: actions/checkout@v3
+        with:
+          repository: 35up/jest-coverage-report-action
+          ref: v1
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+          path: .github/actions/jest-coverage-report
+      - name: Code Coverage Report
+        uses: ./.github/actions/jest-coverage-report
+        id: coverage
+        with:
+          working-directory: svelte
+          skip-step: all
+          coverage-file: coverage/report.json
+          base-coverage-file: coverage/report.json
+
+  slack:
+    needs: ci-svelte
+    if: failure()
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      SLACK_BOT_TOKEN: ${{ secrets.ACTIONS_SLACK_BOT_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: 35up/github-action-slack-notify
+          ref: v4
+          token: ${{ secrets.GH_ACCESS_TOKEN }}
+          path: .github/actions/slack-notify
+      - name: Trigger Slack Notification
+        uses: ./.github/actions/slack-notify
+        with:
+          # frontend channel
+          channel-id: C963N8H3J
+          job-status: ${{ needs.ci-svelte.result }}

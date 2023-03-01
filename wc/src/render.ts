@@ -1,5 +1,6 @@
 import { render as renderLit, TemplateResult } from 'lit';
-import { isTemplateResult } from 'lit/directive-helpers';
+// eslint-disable-next-line import/extensions
+import { isTemplateResult } from 'lit/directive-helpers.js';
 import { waitForFrame } from './wait-for-frame';
 
 export async function render<T extends HTMLElement>(

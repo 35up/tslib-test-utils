@@ -1,6 +1,6 @@
 {
   "name": "@35up/tslib-test-utils",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Set of functions and other utils for testing",
   "scripts": {
     "build": "tsc",
@@ -8,7 +8,7 @@
     "test": "jest --passWithNoTests",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
     "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --ci --json --coverage --testLocationInResults --outputFile=coverage/report.json"
   },
   "repository": {
     "type": "git",
