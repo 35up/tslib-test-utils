@@ -76,6 +76,6 @@ jobs:
       - name: Trigger Slack Notification
         uses: ./.github/actions/slack-notify
         with:
-          # frontend channel
-          channel-id: C963N8H3J
+          # gh-reports channel
+          channel-id: C03TQL71JHY
           job-status: ${{ needs.ci-wc.result }}
