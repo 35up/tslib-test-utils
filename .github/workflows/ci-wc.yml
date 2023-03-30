@@ -42,40 +42,10 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm run test:coverage
-      - name: Clone jest-coverate-report
-        uses: actions/checkout@v3
-        with:
-          repository: 35up/jest-coverage-report-action
-          ref: v1
-          token: ${{ secrets.GH_ACCESS_TOKEN }}
-          path: .github/actions/jest-coverage-report
-      - name: Code Coverage Report
-        uses: ./.github/actions/jest-coverage-report
-        id: coverage
+      - name: Generate jest-coverage-report
+        uses: ArtiomTr/jest-coverage-report-action@v2.2.1
         with:
           working-directory: wc
           skip-step: all
           coverage-file: coverage/report.json
           base-coverage-file: coverage/report.json
-
-  slack:
-    needs: ci-wc
-    if: failure()
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
-    env:
-      SLACK_BOT_TOKEN: ${{ secrets.ACTIONS_SLACK_BOT_ID }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          repository: 35up/github-action-slack-notify
-          ref: v4
-          token: ${{ secrets.GH_ACCESS_TOKEN }}
-          path: .github/actions/slack-notify
-      - name: Trigger Slack Notification
-        uses: ./.github/actions/slack-notify
-        with:
-          # gh-reports channel
-          channel-id: C03TQL71JHY
-          job-status: ${{ needs.ci-wc.result }}
