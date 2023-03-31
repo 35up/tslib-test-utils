@@ -1,5 +1,5 @@
 const { nextTick } = process;
 
 export async function flushPromises(): Promise<void> {
-  return new Promise(resolve => nextTick(resolve));
+  return new Promise((resolve) => { nextTick(resolve); });
 }
