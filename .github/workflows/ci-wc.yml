@@ -31,9 +31,7 @@ jobs:
       - name: Setup NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-      - name: Configure GitHub NPM Token
-        run: npm config set '//npm.pkg.github.com/:_authToken' "${{ secrets.NPM_TOKEN }}"
+          node-version: 16
       - name: Install
         run: npm install
       - name: Build
