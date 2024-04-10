@@ -1,14 +1,15 @@
 {
   "name": "@35up/js-test-utils",
   "version": "0.1.1",
-  "description": "Set of functions and other utils for testing",
+  "description": "This package is deprecated. Please use @35up/tslib-test-utils instead",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ext .js,.ts .",
     "test": "jest --passWithNoTests",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
     "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --coverage",
+    "postinstall": "echo \"@35up/js-test-utils is deprecated. Please use @35up/tslib-test-utils instead\" 1>&2"
   },
   "repository": {
     "type": "git",
