@@ -1,6 +1,6 @@
 {
   "name": "@35up/js-test-utils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This package is deprecated. Please use @35up/tslib-test-utils instead",
   "scripts": {
     "build": "tsc",
