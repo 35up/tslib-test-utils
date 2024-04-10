@@ -1,14 +1,15 @@
 {
   "name": "@35up/js-test-utils-wc",
   "version": "1.0.0",
-  "description": "Set of functions and other utils for testing web components",
+  "description": "This package is deprecated. Use @35up/tslib-test-utils-wc instead",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ext .js,.ts .",
     "test": "jest --passWithNoTests",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
     "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --coverage"
+    "test:coverage": "npm test -- --coverage",
+    "postinstall": "echo \"@35up/js-test-utils-wc is deprecated. Use @35up/tslib-test-utils-wc instead\" 1>&2"
   },
   "repository": {
     "type": "git",
