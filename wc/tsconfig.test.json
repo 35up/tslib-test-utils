@@ -1,4 +1,15 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "@35up/ts-configs/tsconfig.loose.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "*": [
+        "node_modules/*"
+      ]
+    }
+  },
+  "exclude": ["node_modules"],
   "include": ["**/*.test.ts", "src/setup-tests.ts"]
 }
