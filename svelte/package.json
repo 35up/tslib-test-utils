@@ -20,12 +20,14 @@
     "url": "https://github.com/35up/tslib-test-utils/issues"
   },
   "homepage": "https://github.com/35up/tslib-test-utils#readme",
+  "peerDependencies": {
+    "@testing-library/svelte": ">=4.0.0",
+    "svelte": ">=3.0.0"
+  },
   "devDependencies": {
     "@35up/eslint-config-35up-base": "^4.0.9",
     "@35up/ts-configs": "^1.0.0",
-    "@testing-library/svelte": "^5.2.0",
     "eslint": "^8.37.0",
-    "svelte": "^4.2.18",
     "typescript": "^5.5.3"
   },
   "type": "module",
