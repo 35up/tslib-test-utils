@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "Set of functions and other utils for testing",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf build && tsc",
     "lint": "eslint --ext .js,.ts .",
     "test": "jest --passWithNoTests",
     "prepublishOnly": "npm run lint && npm run test && npm run build",
@@ -24,29 +24,32 @@
   },
   "homepage": "https://github.com/35up/tslib-test-utils#readme",
   "dependencies": {
-    "sinon": "^9.0.3"
+    "sinon": "^18.0.0"
   },
   "devDependencies": {
     "@35up/eslint-config-35up-base": "^4.0.9",
+    "@35up/ts-configs": "^1.0.0",
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "@types/chai": "^4.2.12",
     "@types/chai-string": "^1.4.2",
-    "@types/jest": "^27.0.3",
+    "@types/jest": "^29.5.12",
     "@types/sinon": "^9.0.5",
     "@types/sinon-chai": "^3.2.4",
-    "babel-jest": "^26.0.13",
+    "babel-jest": "^29.7.0",
     "chai": "^4.2.0",
     "chai-string": "^1.5.0",
     "eslint": "^8.37.0",
-    "jest": "^26.0.13",
+    "jest": "^29.7.0",
     "regenerator-runtime": "^0.13.7",
     "sinon-chai": "^3.5.0",
-    "ts-jest": "^26.0.13",
-    "typescript": "^4.0.2"
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.5.3"
   },
+  "type": "module",
   "main": "build/index.js",
+  "module": "build/index.js",
   "engines": {
-    "node": ">=4"
+    "node": ">=18"
   }
 }
