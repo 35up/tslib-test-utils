@@ -3,12 +3,9 @@
   "version": "2.0.1",
   "description": "Set of functions and other utils for testing in svelte",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf build && tsc",
     "lint": "eslint --ext .js,.ts .",
-    "test": "jest --passWithNoTests",
-    "prepublishOnly": "npm run lint && npm run test && npm run build",
-    "test:watch": "npm test -- --watch",
-    "test:coverage": "npm test -- --ci --json --coverage --testLocationInResults --outputFile=coverage/report.json"
+    "prepublishOnly": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,27 +22,16 @@
   "homepage": "https://github.com/35up/tslib-test-utils#readme",
   "devDependencies": {
     "@35up/eslint-config-35up-base": "^4.0.9",
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "@testing-library/svelte": "^3.2.1",
-    "@types/chai": "^4.2.12",
-    "@types/chai-string": "^1.4.2",
-    "@types/jest": "^26.0.13",
-    "@types/sinon": "^9.0.5",
-    "@types/sinon-chai": "^3.2.4",
-    "babel-jest": "^26.0.13",
-    "chai": "^4.2.0",
-    "chai-string": "^1.5.0",
+    "@35up/ts-configs": "^1.0.0",
+    "@testing-library/svelte": "^5.2.0",
     "eslint": "^8.37.0",
-    "jest": "^26.0.13",
-    "regenerator-runtime": "^0.13.7",
-    "sinon-chai": "^3.5.0",
-    "svelte": "^3.50.0",
-    "ts-jest": "^26.0.13",
-    "typescript": "^4.8.2"
+    "svelte": "^4.2.18",
+    "typescript": "^5.5.3"
   },
+  "type": "module",
   "main": "build/index.js",
+  "module": "build/index.js",
   "engines": {
-    "node": ">=4"
+    "node": ">=18"
   }
 }

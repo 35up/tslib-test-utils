@@ -1,8 +1,10 @@
 {
-  "extends": "../tsconfig.base.json",
+  "extends": "@35up/ts-configs/tsconfig.strict.json",
   "compilerOptions": {
     "outDir": "./build/",
+    "skipLibCheck": true,
+    "declaration": true
   },
   "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts", "src/setup-tests.ts"]
+  "exclude": ["node_modules"]
 }
