@@ -19,5 +19,5 @@ export function char(set = ALL): TGenerator<string> {
     for (const charIndex of indexGenerator()) {
       yield set[charIndex];
     }
-  };
+  } as TGenerator<string>;
 }

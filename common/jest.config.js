@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   setupFilesAfterEnv: ['./src/setup-tests.ts'],
   coverageDirectory: './coverage',
   coverageThreshold: {
@@ -12,11 +12,6 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.ts', '!src/index.ts'],
   transform: {
     '^.+\\.m?js$': 'babel-jest',
-    '^.+\\.ts$': ['ts-jest', {babelConfig: true}],
-  },
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
-    },
+    '^.+\\.ts$': ['ts-jest', {babelConfig: true, tsconfig: 'tsconfig.test.json'}],
   },
 };

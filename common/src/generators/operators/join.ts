@@ -20,15 +20,17 @@ export function join<T>(
       // eslint-disable-next-line no-continue
       if (finished.has(index)) continue;
 
-      const { value, done } = iterators[index].next();
+      if (iterators[index]) {
+        const { value, done } = iterators[index].next();
 
-      if (done) {
-        finished.add(index);
-        // eslint-disable-next-line no-continue
-        continue;
+        if (done) {
+          finished.add(index);
+          // eslint-disable-next-line no-continue
+          continue;
+        }
+
+        yield value;
       }
-
-      yield value;
     }
   };
 }

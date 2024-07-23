@@ -1,9 +1,8 @@
-import { tick } from 'svelte';
+import { tick, type SvelteComponent } from 'svelte';
 import {
   render as testingRender,
   RenderResult,
 } from '@testing-library/svelte';
-import type { SvelteComponent } from 'svelte/types/runtime';
 
 
 export async function render<C extends SvelteComponent>(

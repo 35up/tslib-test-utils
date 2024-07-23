@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   setupFilesAfterEnv: ['./src/setup-tests.ts'],
   transformIgnorePatterns: [
     '/node_modules/(?!lit|@lit)',
@@ -15,12 +15,7 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.ts', '!src/index.ts'],
   transform: {
     '^.+\\.m?js$': 'babel-jest',
-    '^.+\\.ts$': ['ts-jest', {babelConfig: true}],
+    '^.+\\.ts$': ['ts-jest', {babelConfig: true, tsconfig: 'tsconfig.test.json'}],
   },
   testEnvironment: 'jsdom',
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
-    },
-  },
 };
