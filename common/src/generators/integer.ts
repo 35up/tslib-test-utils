@@ -1,6 +1,6 @@
-import { number } from './number';
+import { number } from './number.js';
 import { map } from './operators';
-import { TGenerator } from './types';
+import { TGenerator } from './types.js';
 
 
 export function integer(

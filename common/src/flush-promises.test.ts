@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { flushPromises } from './flush-promises';
+import { flushPromises } from './flush-promises.js';
 
 
 describe('flush-promises', () => {

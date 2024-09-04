@@ -3,6 +3,9 @@ export default {
   transformIgnorePatterns: [
     '/node_modules/(?!lit|@lit)',
   ],
+  moduleNameMapper: {
+    '^(?!lit)(.*)\.js$': '$1',
+  },
   coverageDirectory: './coverage',
   coverageThreshold: {
     global: {

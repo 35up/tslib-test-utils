@@ -1,5 +1,5 @@
-export { array } from './array';
-export { boolean } from './boolean';
+export { array } from './array.js';
+export { boolean } from './boolean.js';
 export {
   char,
   LOWER_CASE_LETTERS,
@@ -7,11 +7,11 @@ export {
   UPPER_CASE_LETTERS,
   SYMBOLS,
   ALL as CHARACTERS,
-} from './char';
-export { integer } from './integer';
-export { number } from './number';
-export { object } from './object';
-export { string } from './string';
+} from './char.js';
+export { integer } from './integer.js';
+export { number } from './number.js';
+export { object } from './object.js';
+export { string } from './string.js';
 export * from './operators';
-export * from './types';
+export * from './types.js';
 

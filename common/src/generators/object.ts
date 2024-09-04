@@ -1,5 +1,5 @@
 import { zip, map } from './operators';
-import { TGenerator } from './types';
+import { TGenerator } from './types.js';
 
 // I need to guard that T is an object, there is no other sensible way to do
 // this. `Record` gives the possibilities of arbitrary props and {} means empty

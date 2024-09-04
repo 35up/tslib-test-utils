@@ -1,6 +1,6 @@
-import { integer } from './integer';
+import { integer } from './integer.js';
 import { take, map } from './operators';
-import { TGenerator } from './types';
+import { TGenerator } from './types.js';
 
 
 export function array<T>(

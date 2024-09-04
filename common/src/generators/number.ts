@@ -1,4 +1,4 @@
-import { TGenerator } from './types';
+import { TGenerator } from './types.js';
 
 
 // It is safe because the implementation avoids the possibility of overflowing
