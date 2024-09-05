@@ -1,4 +1,4 @@
-import { take } from './generators';
+import { take } from './generators/index.js';
 
 
 type TFuzzDescription<T> = string | ((arg: T) => string);
