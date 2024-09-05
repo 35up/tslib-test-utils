@@ -2,7 +2,7 @@ export default {
   setupFilesAfterEnv: ['./src/setup-tests.ts'],
   coverageDirectory: './coverage',
   moduleNameMapper: {
-    '(.*)\.js$': '$1',
+    '(.*).js$': '$1',
   },
   coverageThreshold: {
     global: {

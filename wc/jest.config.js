@@ -4,7 +4,7 @@ export default {
     '/node_modules/(?!lit|@lit)',
   ],
   moduleNameMapper: {
-    '^(?!lit)(.*)\.js$': '$1',
+    '^(?!lit)(.*).js$': '$1',
   },
   coverageDirectory: './coverage',
   coverageThreshold: {
