@@ -1,2 +1,2 @@
-export { render } from './render';
-export { waitForFrame } from './wait-for-frame';
+export { render } from './render.js';
+export { waitForFrame } from './wait-for-frame.js';

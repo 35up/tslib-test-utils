@@ -1,2 +1,2 @@
 export * from '@testing-library/svelte';
-export { render } from './render';
+export { render } from './render.js';

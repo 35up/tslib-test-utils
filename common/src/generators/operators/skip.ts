@@ -1,4 +1,4 @@
-import { TGenerator } from '../types';
+import { TGenerator } from '../types.js';
 
 
 export function skip<T>(

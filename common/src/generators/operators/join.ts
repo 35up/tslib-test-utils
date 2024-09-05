@@ -1,5 +1,5 @@
-import { integer } from '../integer';
-import { TGenerator } from '../types';
+import { integer } from '../integer.js';
+import { TGenerator } from '../types.js';
 
 
 /**
