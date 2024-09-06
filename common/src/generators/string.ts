@@ -1,6 +1,6 @@
 import { ALL, char } from './char.js';
 import { array } from './array.js';
-import { map } from './operators';
+import { map } from './operators/index.js';
 import { TGenerator } from './types.js';
 
 

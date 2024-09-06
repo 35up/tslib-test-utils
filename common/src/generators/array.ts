@@ -1,5 +1,5 @@
 import { integer } from './integer.js';
-import { take, map } from './operators';
+import { take, map } from './operators/index.js';
 import { TGenerator } from './types.js';
 
 

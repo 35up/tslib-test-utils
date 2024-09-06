@@ -12,6 +12,6 @@ export { integer } from './integer.js';
 export { number } from './number.js';
 export { object } from './object.js';
 export { string } from './string.js';
-export * from './operators';
+export * from './operators/index.js';
 export * from './types.js';
 

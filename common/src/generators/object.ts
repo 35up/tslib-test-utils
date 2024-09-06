@@ -1,4 +1,4 @@
-import { zip, map } from './operators';
+import { zip, map } from './operators/index.js';
 import { TGenerator } from './types.js';
 
 // I need to guard that T is an object, there is no other sensible way to do
